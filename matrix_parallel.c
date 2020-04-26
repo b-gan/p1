@@ -45,9 +45,10 @@ int main(int argc, char *argv[]) //first is size of matrix, second is number of 
     set_up = (float)(stop - start) / CLOCKS_PER_SEC;
 
     start = clock();
+int my_rank,thread_count;
 #pragma omp parallel
-    //int my_rank = omp_get_thread_num();
-	//int thread_count = omp_get_num_threads();
+    my_rank = omp_get_thread_num();
+thread_count = omp_get_num_threads();
     //printf("Hello from thread %d of %d threads\n", my_rank, thread_count);
 printf("hello\n");
     for (i = 0; i < size; i++)
