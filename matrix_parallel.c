@@ -3,7 +3,7 @@
 #include <time.h>
 #include <omp.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) //first is size of matrix, second is number of threads
 {
     int thread = atoi(argv[2]);
     omp_set_num_threads(thread); //just setting #of thread nothing else
@@ -45,6 +45,10 @@ int main(int argc, char *argv[])
     set_up = (float)(stop - start) / CLOCKS_PER_SEC;
 
     start = clock();
+#pragma omp parallel
+    int my_rank = omp_get_thread_num();
+    int thread_count = omp_get_num_threads();
+    printf("Hello from thread %d of %d threads\n", my_rank, thread_count);
     for (i = 0; i < size; i++)
     {
         for (j = 0; j < size; j++)
