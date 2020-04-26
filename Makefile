@@ -7,7 +7,7 @@ serial: matrix_serial.c
 	touch serial_timings.csv
 
 parallel: matrix_parallel.c
-	gcc −g −Wall −fopenmp −o matrix_parallel matrix_parallel.c
+	gcc -o matrix_parallel -fopenmp matrix_parallel.c
 	touch parallel_timings.csv
 
 clean:
