@@ -17,7 +17,16 @@
 # Description: This generates `memconfig` file for M2S
 # Each core has its own Instruction-L1$ and Data-L1$, or with shared I-L1$.
 # ===========================================================
-
+# methods call
+# create_memconfig(16,16,2,4,0,32,4,512,8,1,4,64,64,100,64,4,512,16,22,63,128,128);
+# create_memconfig(48,96,1,16,0,32,4,512,8,1,4,64,64,100,64,4,512,16,22,63,128,128);
+import sys #first argv is the name of the python file
+def main():
+	spec = sys.argv[1:]
+	for i in range(0,len(spec)):
+		spec[i] = int(spec[i])
+	create_memconfig(spec[0],spec[1],spec[2],spec[3],spec[4],spec[5],spec[6],spec[7],spec[8],spec[9],spec[10],spec[11],spec[12],spec[13],spec[14],spec[15],spec[16],spec[17],spec[18],spec[19],spec[20],spec[21],spec[22])
+	
 def create_memconfig( 	num_of_cpu_cores, 	# number of CPU cores
 						num_of_gpu_cores,	# number of GPU cores
 						type_of_gpu,	# type of GPU
@@ -328,8 +337,7 @@ def create_memconfig( 	num_of_cpu_cores, 	# number of CPU cores
 	# close
 	f.close();
 
-# methods call
-# create_memconfig(16,16,2,4,0,32,4,512,8,1,4,64,64,100,64,4,512,16,22,63,128,128);
-# create_memconfig(48,96,1,16,0,32,4,512,8,1,4,64,64,100,64,4,512,16,22,63,128,128);
-	
+if __name__=="__main__":
+	main()
+
 
