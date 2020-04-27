@@ -45,13 +45,12 @@ int main(int argc, char *argv[]) //first is size of matrix, second is number of 
     set_up = (float)(stop - start) / CLOCKS_PER_SEC;
 
     start = clock();
-#pragma omp parallel private(i,j,k,total)
+#pragma omp parallel shared(A,B,C) private(i,j,k,total)
 {
-	int thread_count = omp_get_num_threads();
-   int my_rank = omp_get_thread_num();
-    printf("Hello from thread %d of %d threads\n", my_rank, thread_count);
-    printf("hey\n");
-	fflush(stdout);
+//	int thread_count = omp_get_num_threads();
+//   int my_rank = omp_get_thread_num();
+ //   printf("Hello from thread %d of %d threads\n", my_rank, thread_count);
+#pragma omp for schedule(dynamic)
 for (i = 0; i < size; i++)
     {
         for (j = 0; j < size; j++)
@@ -64,9 +63,9 @@ for (i = 0; i < size; i++)
             total = 0;
         }
     } //------matrix multiplication and placed in matrix C
+}
     stop = clock();
     mult = (float)(stop - start) / CLOCKS_PER_SEC;
-}
     printf("%f,%f\n", set_up, mult);
 
     // for (i = 0; i < size; i++)
