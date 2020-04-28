@@ -7,7 +7,7 @@ serial: matrix_serial.c
 	touch serial_timings.csv
 
 parallel: matrix_parallel.c
-	gcc -m32 -static -o matrix_parallel -fopenmp matrix_parallel.c
+	gcc matrix_parallel.c -fopenmp -m32 -static -o matrix_parallel #-fopenmp matrix_parallel.c
 	touch parallel_timings.csv
 
 clean:

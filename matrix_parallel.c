@@ -29,10 +29,10 @@ int main(int argc, char *argv[]) //first is size of matrix, second is number of 
         C[k] = (ptr2 + size * k);
     } //set up pointer for 2D matrix
 
-    srand(time(0));
-    clock_t start, stop;
-    float set_up, mult;
-    start = clock();
+//    srand(time(0));
+//    clock_t start, stop;
+//    float set_up, mult;
+//    start = clock();
     for (i = 0; i < size; i++)
     {
         for (j = 0; j < size; j++)
@@ -41,10 +41,10 @@ int main(int argc, char *argv[]) //first is size of matrix, second is number of 
             B[i][j] = rand(); // % 10
         }
     } //----set up random number for multiplication aboce
-    stop = clock();
-    set_up = (float)(stop - start) / CLOCKS_PER_SEC;
+ //   stop = clock();
+ //   set_up = (float)(stop - start) / CLOCKS_PER_SEC;
 
-    start = clock();
+   // start = clock();
 #pragma omp parallel shared(A,B,C) private(i,j,k,total)
 {
 //	int thread_count = omp_get_num_threads();
@@ -64,9 +64,9 @@ for (i = 0; i < size; i++)
         }
     } //------matrix multiplication and placed in matrix C
 }
-    stop = clock();
-    mult = (float)(stop - start) / CLOCKS_PER_SEC;
-    printf("%f,%f\n", set_up, mult);
+//    stop = clock();
+//    mult = (float)(stop - start) / CLOCKS_PER_SEC;
+//    printf("%f,%f\n", set_up, mult);
 
     // for (i = 0; i < size; i++)
     // {

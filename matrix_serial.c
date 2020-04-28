@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
     srand(time(0));
     clock_t start, stop;
     float set_up, mult;
-    start = clock();
+//    start = clock();
     for (i = 0; i < size; i++)
     {
         for (j = 0; j < size; j++)
@@ -37,10 +37,10 @@ int main(int argc, char *argv[])
             B[i][j] = rand(); // % 10
         }
     } //----set up random number for multiplication aboce
-    stop = clock();
-    set_up = (float)(stop - start) / CLOCKS_PER_SEC;
+  //  stop = clock();
+    //set_up = (float)(stop - start) / CLOCKS_PER_SEC;
 
-    start = clock();
+   // start = clock();
     for (i = 0; i < size; i++)
     {
         for (j = 0; j < size; j++)
@@ -53,9 +53,9 @@ int main(int argc, char *argv[])
             total = 0;
         }
     } //------matrix multiplication and placed in matrix C
-    stop = clock();
-    mult = (float)(stop - start) / CLOCKS_PER_SEC;
-    printf("%f,%f\n", set_up, mult);
+   // stop = clock();
+   // mult = (float)(stop - start) / CLOCKS_PER_SEC;
+   // printf("%f,%f\n", set_up, mult);
 
     free(A);
     free(B);
