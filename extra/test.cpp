@@ -15,7 +15,8 @@ void openMP()
 {
     omp_set_num_threads(1);
     int sum = 0;
-#pragma omp parallel for shared(sum)
+#pragma omp parallel for shared(sum) reduction(+ \
+                                               : sum)
     {
         for (int i = 0; i < 100; i++)
         {
