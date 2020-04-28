@@ -9,3 +9,6 @@ variables outside mem-config
 scheduler, size of matrix, 4 threads,
 
 memory config
+
+
+take a look at -lm flag
